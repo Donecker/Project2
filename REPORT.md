@@ -1,4 +1,4 @@
-### Project 2 Report
+# Project 2 Report
 
 Project #2 Report - Libuthread library
 
@@ -12,7 +12,7 @@ report.
 
 ## Implementation
 
-#Queue
+### Queue
 
 The Queue was an important data structure that was relied apon by the rest of
 the library. I used the comments from the Queue header file as a guide on how
@@ -38,7 +38,7 @@ address as the data we were trying to remove.
 
 //Add iterator description here
 
-# Uthread
+### Uthread
 
 The Uthread part of the library took the longest to implement. Understanding
 the idle loop and the context switching took a good chunk of time to get
