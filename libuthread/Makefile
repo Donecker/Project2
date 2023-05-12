@@ -8,7 +8,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -MMD
 
 # Extra for debugging, remove this for submission
-CFLAGS += -g
+#CFLAGS += -g
 
 # Objects
 objs := queue.o uthread.o context.o preempt.o sem.o 

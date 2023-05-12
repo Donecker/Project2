@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// TODO: comment fully
 // @count: amount of resources
 // @blocked: queue of blocked threads for this semaphore
 struct semaphore {
@@ -13,8 +14,8 @@ struct semaphore {
 	queue_t blocked;
 };
 
-sem_t sem_create(size_t count){
-
+sem_t sem_create(size_t count)
+{
 	// Allocate memory for semaphore
 	sem_t sem = (sem_t)malloc(sizeof(sem_t));
 
@@ -30,8 +31,8 @@ sem_t sem_create(size_t count){
 	return sem;
 }
 
-int sem_destroy(sem_t sem){
-
+int sem_destroy(sem_t sem)
+{
 	// Check if sem is NULL
 	if (sem == NULL) {
 		return -1;
@@ -48,15 +49,16 @@ int sem_destroy(sem_t sem){
 	return 0;
 }
 
-int sem_down(sem_t sem){
-
+int sem_down(sem_t sem)
+{
+	// printf("sem_down %d\n", sem->count);
 	// Check if sem is NULL
 	if (sem == NULL) {
 		return -1;
 	}
 
 	// Not a regular spinlock since the item is put in the blocked queue.
-	// This prevents the thread from accessing the resource incase it gets blocked again
+	// This prevents the thread from accessing the resource if it gets blocked again
 	while (sem->count == 0) {
 		queue_enqueue(sem->blocked, uthread_current());
 		uthread_block();
@@ -68,8 +70,9 @@ int sem_down(sem_t sem){
 	return 0;
 }
 
-int sem_up(sem_t sem){
-
+int sem_up(sem_t sem)
+{
+	// printf("sem_up %d\n",sem->count);
 	// Check if sem is NULL
 	if (sem == NULL) {
 		return -1;
