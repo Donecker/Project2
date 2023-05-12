@@ -6,8 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#define DEBUG
-
 /*
  * The thread state represents all the possible states of a thread.
  */
@@ -38,21 +36,6 @@ queue_t finished_queue;
  * The currently running thread control block.
  */
 struct uthread_tcb* current_thread;
-
-void log_debug(char* message) {
-#ifdef DEBUG
-	printf("DEBUG %s\n", message);
-#endif
-}
-
-void queue_stats(char* tag) {
-#ifdef DEBUG
-	printf("DEBUG %s: ready=%d, finished=%d\n",
-		   tag,
-		   queue_length(ready_queue),
-		   queue_length(finished_queue));
-#endif
-}
 
 int uthread_run(bool preempt, uthread_func_t func, void *arg) {
 
